@@ -4861,6 +4861,7 @@ GameObject:
   - component: {fileID: 9209244092892969080}
   - component: {fileID: 115662851432905924}
   - component: {fileID: -1935579911921581792}
+  - component: {fileID: 4407421589085238953}
   m_Layer: 0
   m_Name: MyPlayer
   m_TagString: Untagged
@@ -4946,8 +4947,28 @@ MonoBehaviour:
   _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
   _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
   _sceneViewDestroyWhenLastClientLeaves: 1
-  _components: []
+  _components:
+  - componentID: 1
+    component: {fileID: 4407421589085238953}
   _childViews: []
+--- !u!114 &4407421589085238953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334426791266103990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1029778088, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolate: 1
+  _syncPosition: 1
+  _syncRotation: 0
+  _syncScale: 0
+  _syncVelocity: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!1 &1949663515760053244
 GameObject:
   m_ObjectHideFlags: 0
