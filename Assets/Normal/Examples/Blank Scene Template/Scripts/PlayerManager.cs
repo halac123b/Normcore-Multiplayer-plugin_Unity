@@ -12,16 +12,20 @@ public class PlayerManager : MonoBehaviour {
         // Get the Realtime component on this game object
         _realtime = GetComponent<Realtime>();
 
-        // Notify us when Realtime successfully connects to the room
+        // Callback when Realtime successfully connects to the room
         _realtime.didConnectToRoom += DidConnectToRoom;
     }
 
     private void DidConnectToRoom(Realtime realtime) {
+        Realtime.InstantiateOptions options = new Realtime.InstantiateOptions { 
+            ownedByClient = true,
+            preventOwnershipTakeover = false,
+            destroyWhenOwnerLeaves = true,
+            destroyWhenLastClientLeaves = true,
+            useInstance = realtime
+        };
         // Instantiate the Player for this client once we've successfully connected to the room
-        GameObject playerGameObject = Realtime.Instantiate(prefabName: _prefab.name,  // Prefab name
-            ownedByClient: true,      // Make sure the RealtimeView on this prefab is owned by this client
-            preventOwnershipTakeover: true,      // Prevent other clients from calling RequestOwnership() on the root RealtimeView.
-            useInstance: realtime); // Use the instance of Realtime that fired the didConnectToRoom event.
+        GameObject playerGameObject = Realtime.Instantiate(prefabName: _prefab.name, options);
 
         // Get a reference to the player
         Player player = playerGameObject.GetComponent<Player>();
@@ -30,10 +34,6 @@ public class PlayerManager : MonoBehaviour {
         ParentConstraint cameraConstraint = _camera.GetComponent<ParentConstraint>();
         
         // Add the camera target so the camera follows it
-        if (player == null){
-            Debug.Log($"Haha {player}");
-        }
-        
         ConstraintSource constraintSource = new ConstraintSource { sourceTransform = player.cameraTarget, weight = 1.0f };
         int constraintIndex = cameraConstraint.AddSource(constraintSource);
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Normal.Realtime;
 
+// Player controller
 public class Player : MonoBehaviour {
     // Camera
     public  Transform  cameraTarget;
