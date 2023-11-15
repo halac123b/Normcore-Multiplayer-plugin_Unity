@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour {
             destroyWhenLastClientLeaves = true,
             useInstance = realtime
         };
+        
         // Instantiate the Player for this client once we've successfully connected to the room
         GameObject playerGameObject = Realtime.Instantiate(prefabName: _prefab.name, options);
 
