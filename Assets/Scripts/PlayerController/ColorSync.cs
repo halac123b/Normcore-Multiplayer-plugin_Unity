@@ -12,7 +12,8 @@ public class ColorSync : RealtimeComponent<ColorSyncModel>
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    // Hàm kế thừa từ base class, event đc gọi khi model thay đổi, chứa arg là model trạng thái cũ và trạng thái mới
+    // Hàm kế thừa từ base class, event đc gọi khi RealtimeView đc tạo ra
+    // Sau đó nếu trên database đã tồn tại sẵn model sẽ update theo và gọi 1 lần nữa
     protected override void OnRealtimeModelReplaced(ColorSyncModel previousModel, ColorSyncModel currentModel) {
         if (previousModel != null) {
             // Unregister from events
