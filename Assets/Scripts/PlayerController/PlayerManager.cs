@@ -14,6 +14,12 @@ public class PlayerManager : MonoBehaviour {
 
         // Callback when Realtime successfully connects to the room
         _realtime.didConnectToRoom += DidConnectToRoom;
+
+        // Option to connect to room in offline mode, dont require Internet, for single play, or quick test feature
+        // Update in 2.10.0
+        _realtime.Connect("room_id", new Room.ConnectOptions {
+            offlineMode = true
+        });
     }
 
     private void DidConnectToRoom(Realtime realtime) {
